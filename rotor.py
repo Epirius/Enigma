@@ -66,12 +66,12 @@ class Rotor:
 
 	#get the key going through the rotor in the opposite direction
 	def get_return_key(self, letter):
-		print(letter)
 		self.temp_return_letter = ord(letter) + self.offset
 		if (self.temp_return_letter - 64) > 26:
 			self.temp_return_letter -= 26
+		if self.position == 0:
+			# FIXIT: this -1 is a bad fix. there is an off by one error only on return rotor 1. and i can't find the bug so i just have it -= 1 here. but the bug might break otherthings aswell so this is not ideal.
+			self.temp_return_letter -= 1
 		self.temp_return_letter = chr(self.temp_return_letter)
 
-		print(f"self return {self.temp_return_letter}")
-		print(self.reverse_rotor)
 		return self.reverse_rotor.get(self.temp_return_letter)
