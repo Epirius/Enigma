@@ -30,18 +30,5 @@ test = Rotor(rotor1,0)
 test1 = Rotor(rotor1,0)
 test2 = Rotor(rotor1,0)
 print(test.get_key("A"))
-<<<<<<< HEAD
-
-=======
-print("------------")
-for i in range(0,15):
-	print(test.get_key("A"))
-print("------------")
-print(test1.get_key("A"))
-print()
-print(test.get_key("A"))
-print()
-print(test1.get_key("A"))
->>>>>>> rotation
-
+#####
 #####
