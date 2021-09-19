@@ -50,11 +50,18 @@ class Rotor:
 
 	
 	def get_key(self, letter):
+
+		if self.position == 0:	#TODO :remove this temp testing
+			print(f"this is offset {self.offset}")
+
 		#add the offset to the letter before using that letter in the rotor
 		self.temp_letter = ord(letter) + self.offset
+		print(f"this is letter 1: {self.temp_letter}")
 		if (self.temp_letter - 64) > 26:
 			self.temp_letter -= 26
+		print(f"this is letter 2: {self.temp_letter}")
 		self.temp_letter = chr(self.temp_letter)
+		print(f"this is letter 3: {self.temp_letter}")
 
 		#if this is the first rotor, then it should move after every letter.
 		#but i call it anyway because of other logic that should happen always.
@@ -71,7 +78,12 @@ class Rotor:
 			self.temp_return_letter -= 26
 		if self.position == 0:
 			# FIXIT: this -1 is a bad fix. there is an off by one error only on return rotor 1. and i can't find the bug so i just have it -= 1 here. but the bug might break otherthings aswell so this is not ideal.
+			# FIXIT: this fix works for the first letter but causes an of by one error for the next ones. so i need to find out why it is wrong to begin with to continue.
 			self.temp_return_letter -= 1
 		self.temp_return_letter = chr(self.temp_return_letter)
 
+		print()
+		print(self.temp_return_letter)
+		print(self.reverse_rotor)
+		print()
 		return self.reverse_rotor.get(self.temp_return_letter)
