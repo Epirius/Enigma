@@ -9,7 +9,6 @@ class Rotor:
 		self.position = position
 		self.offset = offset
 		self.rotor = self.assign_rotor()
-		print(self.rotor)
 
 	
 	def assign_rotor(self):
