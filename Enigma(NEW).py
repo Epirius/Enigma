@@ -4,7 +4,7 @@
 
 from rotor import Rotor
 
-Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+Alphabet ="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 rotor1 = ("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q")
 rotor2 = ("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E")
 rotor3 = ("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V")
@@ -26,7 +26,10 @@ create_reflector(ReflectorB)
 
 
 #test delete this TODO
-test = Rotor(rotor1,1,0)
+test = Rotor(rotor1,0)
+test1 = Rotor(rotor1,0)
+test2 = Rotor(rotor1,0)
 print(test.get_key("A"))
-print(test.get_key("B"))
-#######
+
+
+#####
