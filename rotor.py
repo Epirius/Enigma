@@ -10,6 +10,7 @@ class Rotor:
 		self.offset = offset
 		self.rotor = self.assign_rotor()
 
+
 	
 	def assign_rotor(self):
 		#creates a dictionary with key = alphabet and value = version (rotor)
