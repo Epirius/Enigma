@@ -3,9 +3,13 @@
 class Rotor:
 
 
-	def __init__(self, version, position, offset):
+	position_list = []
+
+	def __init__(self, version, offset):
+		self.position = len(Rotor.position_list)
+		Rotor.position_list.append(self)
+
 		self.version = version
-		self.position = position
 		self.offset = offset
 		self.rotor = self.assign_rotor()
 
@@ -19,8 +23,22 @@ class Rotor:
 		return rotor
 
 	
+	def check_notch(self):
+		#TODO: there may be an issue on the second rotor, where this gets called to erly or to late.
+
+		#checking if the letter we just left was a notch
+		if (self.offset) == (ord(self.version[1]) - 65):
+			if self.position < 2:
+				Rotor.position_list[(self.position + 1)].rotate()
+
+
 	def rotate(self):
-		self.offset += 1
+		self.check_notch()
+		if self.position == 0:
+			self.offset += 1
+		
+		if self.offset > 25:
+			self.offset -= 25
 
 	
 	def get_key(self, letter):
@@ -30,9 +48,12 @@ class Rotor:
 			self.temp_letter -= 26
 		self.temp_letter = chr(self.temp_letter)
 
-		#if this is the first rotor, then it should move after every letter
-		if self.position == 1:
-			self.rotate()
+		#if this is the first rotor, then it should move after every letter.
+		#but i call it anyway because of other logic that should happen always.
+		self.rotate()
 
 		#using the letter in the rotor
 		return self.rotor.get(self.temp_letter)
+
+
+	
