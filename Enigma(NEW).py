@@ -2,12 +2,14 @@
 #https://www.cryptomuseum.com/crypto/enigma/index.htm
 #https://piotte13.github.io/enigma-cipher/
 
+from rotor import Rotor
+
 Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-Rotor1 = ("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q")
-Rotor2 = ("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E")
-Rotor3 = ("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V")
-Rotor4 = ("ESOVPZJAYQUIRHXLNFTGKDCMWB", "J")
-Rotor5 = ("VZBRGITYUPSDNHLXAWMJQOFECK", "Z")
+rotor1 = ("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q")
+rotor2 = ("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E")
+rotor3 = ("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V")
+rotor4 = ("ESOVPZJAYQUIRHXLNFTGKDCMWB", "J")
+rotor5 = ("VZBRGITYUPSDNHLXAWMJQOFECK", "Z")
 
 ReflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT"
 ReflectorC = "FVPJIAOYEDRZXWGCTKUQSBNMHL"
@@ -21,3 +23,8 @@ def create_reflector(version):
 
 #TODO: make this non hardcoded!!!
 create_reflector(ReflectorB)
+
+
+#test delete this TODO
+test = Rotor(rotor1,1,1)
+#######
