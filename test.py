@@ -1,6 +1,20 @@
-rotor = {1:"a", 2:"b", 3:"c"}
-print(rotor)
-reverse_rotor={}
-reverse_rotor.update({v: k for k, v in rotor.items()})
+Alphabet ="  ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+rotor1 = ("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q")
+rotor2 = ("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E")
+rotor3 = ("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V")
+rotor4 = ("ESOVPZJAYQUIRHXLNFTGKDCMWB", "J")
+rotor5 = ("VZBRGITYUPSDNHLXAWMJQOFECK", "Z")
 
-print(reverse_rotor)
+ReflectorB = "  YRUHQSLDPXNGOKMIEBFZCWVJAT"
+ReflectorC = "FVPJIAOYEDRZXWGCTKUQSBNMHL"
+
+print (Alphabet)
+print(rotor1)
+print(rotor2)
+print(rotor3)
+print(ReflectorB)
+
+
+
+print(ord("F")-64)
+print(chr(6+64))
