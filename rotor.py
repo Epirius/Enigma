@@ -11,16 +11,24 @@ class Rotor:
 
 		self.version = version
 		self.offset = offset
-		self.rotor = self.assign_rotor()
+		self.rotor = self.assign_rotor(1)
+		self.reverse_rotor = self.assign_rotor(2)
 
 	
-	def assign_rotor(self):
+	def assign_rotor(self, mode):
 		#creates a dictionary with key = alphabet and value = version (rotor)
 		Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-		rotor = {}
-		for i in range(26):
-			rotor.setdefault(Alphabet[i], self.version[0][i])
-		return rotor
+		
+		if mode == 1:
+			rotor = {}
+			for i in range(26):
+				rotor.setdefault(Alphabet[i], self.version[0][i])
+			return rotor
+
+		if mode == 2:
+			reverse_rotor = {}
+			reverse_rotor.update({v: k for k, v in self.rotor.items()})
+			return reverse_rotor
 
 	
 	def check_notch(self):
@@ -56,4 +64,5 @@ class Rotor:
 		return self.rotor.get(self.temp_letter)
 
 
-	
+	#get the key going through the rotor in the opposite direction
+#	def get_return_key(self, letter):

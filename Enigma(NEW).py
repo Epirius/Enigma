@@ -27,8 +27,8 @@ create_reflector(ReflectorB)
 
 #test delete this TODO
 test = Rotor(rotor1,0)
-test1 = Rotor(rotor1,0)
-test2 = Rotor(rotor1,0)
-print(test.get_key("A"))
+#test1 = Rotor(rotor1,0)
+#test2 = Rotor(rotor1,0)
+#print(test.get_key("A"))
 #####
 #####
