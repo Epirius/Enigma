@@ -59,7 +59,7 @@ def enigma(message):
 	return message
 
 
-print(enigma("Q"))
-print(enigma("Q"))
-print(enigma("Q"))
-print(enigma("Q"))
+print(enigma("n"))
+print(enigma("n"))
+print(enigma("n"))
+print(enigma("n"))

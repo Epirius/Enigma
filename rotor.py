@@ -42,11 +42,11 @@ class Rotor:
 
 	def rotate(self):
 		self.check_notch()
-		if self.position == 0:
-			self.offset += 1
+		# if self.position == 0:
+		# 	self.offset += 1
 		
-		if self.offset > 25:
-			self.offset -= 25
+		# if self.offset > 25:
+		# 	self.offset -= 25
 
 	
 	def get_key(self, letter):
@@ -79,7 +79,8 @@ class Rotor:
 		if self.position == 0:
 			# FIXIT: this -1 is a bad fix. there is an off by one error only on return rotor 1. and i can't find the bug so i just have it -= 1 here. but the bug might break otherthings aswell so this is not ideal.
 			# FIXIT: this fix works for the first letter but causes an of by one error for the next ones. so i need to find out why it is wrong to begin with to continue.
-			self.temp_return_letter -= 1
+			#self.temp_return_letter -= 1
+			K=1
 		self.temp_return_letter = chr(self.temp_return_letter)
 
 		print()

@@ -11,3 +11,5 @@ i will still be able to encrypt and decrypt messages from this machine. but i wi
 -------------
 
 for now Enigma(NEW) works with the first letter but not after that (this is a bug), and you have to restart between encrypting and decrypting (this is not a bug. you have to reset the enigma settings to decrypt. something i have not implementet yet so the way to reset is to restart the program.)
+
+-if i turn off the changing of offset it works on more then one letter, so that is where the problem comes from. i will have to take a closer look at that later.
