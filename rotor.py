@@ -66,13 +66,16 @@ class Rotor:
 		self.rotate()
 		self.letter = letter
 
+		#making shure the input has the right format
 		if isinstance(letter, str):
 			self.letter = letter.upper()
 			self.letter = ord(self.letter) - 65
 
+		#adding offset
 		self.letter += Rotor.class_offset[self.position]
 		if self.letter > 25:
 			self.letter -= 25
+
 		print(f'letter: {self.letter}')
 		self.encrypted_letter = self.rotor[chr(self.letter + 65)]
 		print(f'encrypted: {self.encrypted_letter}')
@@ -90,9 +93,13 @@ class Rotor:
 		if self.letter > 25:
 			self.letter -= 25
 
+		print(f'letter: {chr(self.letter + 65)}')
 		self.letter = self.reverse_rotor[chr(self.letter + 65)]
-		self.letter = ord(self.letter) - 65
+		print(f'encrypted: {self.encrypted_letter}')
+		self.letter = Rotor.Alphabet.index(self.letter)
+		# TODO: we may need to put the offset before we convert
 		self.letter += Rotor.class_offset[self.position]
+		print(f'offset: {chr(self.letter + 65)}')
 		return self.letter
 
 
