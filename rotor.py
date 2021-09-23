@@ -13,6 +13,7 @@ class Rotor:
 		Rotor.class_offset[self.position] += offset
 		self.rotor = self.assign_rotor(1)
 		self.reverse_rotor = self.assign_rotor(2)
+		self.notch = self.version[1]
 
 	
 	def assign_rotor(self, mode):
@@ -32,16 +33,23 @@ class Rotor:
 
 	
 	def check_notch(self):
-		#TODO: there may be an issue on the second rotor, where this gets called to erly or to late.
+		#if a rotor rotates past it's notch, rotate the next rotor
+		#TODO: this only works from position 1 to 2. fix it so we also check rotor 2!!!
+		if self.position < len(Rotor.position_list) - 1:
+			if ord(self.notch) - 65 == Rotor.class_offset[self.position]:
+				Rotor.class_offset[self.position + 1] += 1
 
-		#checking if the letter we just left was a notch
-		if (sclass_offset[self.position]) == (ord(self.version[1]) - 65):
-			if self.position < 2:
-				Rotor.position_list[(self.position + 1)].rotate()
 
 
 	def rotate(self):
-		self.check_notch()
+		if self.position == 0:
+			self.check_notch()
+			Rotor.class_offset[self.position] += 1
+			if Rotor.class_offset[self.position] > 25:
+				Rotor.class_offset[self.position] -= 25
+
+
+		#self.check_notch()
 		# if self.position == 0:
 		# 	self.offset += 1
 		
@@ -50,6 +58,7 @@ class Rotor:
 
 	
 	def get_key(self, letter):
+		self.rotate()
 		self.letter = letter
 
 		if isinstance(letter, str):
@@ -61,10 +70,10 @@ class Rotor:
 			self.letter -= 25
 		self.encrypted_letter = self.rotor[chr(self.letter + 65)]
 		#returns position of the encrypted letter in the rotor
-		print()
-		print(self.encrypted_letter)
-		print(f'{self.position} my position' )
-		print()
+		# print()
+		# print(self.encrypted_letter)
+		# print(f'{self.position} my position' )
+		# print()
 		return self.version[0].index(self.encrypted_letter)
 
 

@@ -20,6 +20,11 @@ def create_reflector(version):
 	for i in range(26):
 		reflector_dict.setdefault(Alphabet[i], version[i])
 
+def reflect(letter):
+	letter = chr(letter + 65)
+	letter = reflector_dict[letter]
+	return Alphabet.index(letter)
+
 
 #TODO: make this non hardcoded!!!
 create_reflector(ReflectorB)
@@ -34,17 +39,20 @@ def enigma(message):
 	message = message.upper()
 	# print(message)
 	# print(rotor1)
+	# print(Rotor.class_offset)
 	message = r1.get_key(message)
 	# print(message)
 	# print(rotor2)
+	# print(Rotor.class_offset)
 	message = r2.get_key(message)
-	# print(message)
+	#print(message)
 	# print(rotor3)
+	# print(Rotor.class_offset)
 	message = r3.get_key(message)
-	# print(message)
+	#print(message)
 	# print(ReflectorB)
-	# message = reflector_dict[message]
-	# print(message)
+	message = reflect(message)
+	#print(message)
 	# message = r3.get_return_key(message)
 	# print(message)
 	# message = r2.get_return_key(message)
@@ -60,6 +68,4 @@ def enigma(message):
 
 
 print(enigma("a"))
-print(enigma("b"))
-print(enigma("c"))
-print(enigma("d"))
+#print(enigma("b"))
