@@ -84,6 +84,7 @@ class Rotor:
 
 	#get the key going through the rotor in the opposite direction
 	def get_return_key(self, letter):
+		self.rotate()
 		self.letter = letter
 
 		if isinstance(letter, str):
@@ -93,13 +94,13 @@ class Rotor:
 		if self.letter > 25:
 			self.letter -= 25
 
-		print(f'letter: {chr(self.letter + 65)}')
+		# print(f'letter: {chr(self.letter + 65)}')
 		self.letter = self.reverse_rotor[chr(self.letter + 65)]
-		print(f'encrypted: {self.encrypted_letter}')
+		# print(f'encrypted: {self.encrypted_letter}')
 		self.letter = Rotor.Alphabet.index(self.letter)
 		# TODO: we may need to put the offset before we convert
-		self.letter += Rotor.class_offset[self.position]
-		print(f'offset: {chr(self.letter + 65)}')
+		self.letter -= Rotor.class_offset[self.position]
+		# print(f'offset: {chr(self.letter + 65)}')
 		return self.letter
 
 
