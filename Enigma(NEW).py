@@ -21,7 +21,8 @@ def create_reflector(version):
 		reflector_dict.setdefault(Alphabet[i], version[i])
 
 def reflect(letter):
-	letter = chr(letter + 65)
+	if isinstance(letter, int):
+		letter = chr(letter + 65)
 	letter = reflector_dict[letter]
 	return Alphabet.index(letter)
 
@@ -43,17 +44,17 @@ def enigma(text):
 		# print(message)
 		# print(rotor1)
 		# print(Rotor.class_offset)
-		# message = r1.get_key(message)
+		message = r1.get_key(message)
 		# print(message)
 		# print(rotor2)
 		# print(Rotor.class_offset)
-		# message = r2.get_key(message)
+		message = r2.get_key(message)
 		# print(message)
 		# print(rotor3)
 		# # print(Rotor.class_offset)
-		# message = r3.get_key(message)
+		message = r3.get_key(message)
 		# print(f'before rotor: {message}')
-		# message = reflect(message)
+		message = reflect(message)
 		# print(f'after rotor: {message}')
 		message = r3.get_return_key(message)
 		# print(message)
@@ -66,6 +67,6 @@ def enigma(text):
 		output += chr(message+65) + " "
 	return output
 
-test= enigma("xxyzr")
+test= enigma("")
 print(".............................")
 print(test)
