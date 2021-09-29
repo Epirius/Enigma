@@ -17,6 +17,6 @@ for now Enigma(NEW) works with the first letter but not after that (this is a bu
 
 
 TODO:
--make the third rotor spin
--fix the fact that sometimes a letter is translated wrong
--make shure the 2 and 3 rotors don't get above 26
+-add plugboard
+-add morse code input and output.
+-make a frontend
