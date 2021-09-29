@@ -54,7 +54,13 @@ def enigma(text):
 	return output
 
 
-x= "hello" *500
+x= "hello" *200
 test= enigma(x)
 print(".............................")
 print(test)
+
+print("\n" *3)
+print(Rotor.position_list)
+x = (Rotor.position_list.index(Rotor.position_list[1]))
+print(x)
+print(Rotor.position_list[x+1])

@@ -40,38 +40,37 @@ class Rotor:
 			reverse_rotor.update({v: k for k, v in self.rotor.items()})
 			return reverse_rotor
 
-	
-	def check_notch(self):
+
+	def check_notch(self, rotor_obj):
 		#if a rotor rotates past it's notch, rotate the next rotor
-		#TODO: this only works from position 1 to 2. fix it so we also check rotor 2!!!
-		if self.position < len(Rotor.position_list) - 1:
-			if ord(self.notch) - 65 == Rotor.class_offset[self.position]:
-				Rotor.class_offset[self.position + 1] += 1
-				Rotor.class_offset[self.position + 1] = self.out_of_range(Rotor.class_offset[self.position + 1])
+
+		if rotor_obj.position < len(Rotor.position_list) - 1: 	#if i am not the last rotor
+			if ord(rotor_obj.notch) - 65 == Rotor.class_offset[rotor_obj.position]: #if my notch = my offset
+
+				next_rotor = Rotor.position_list.index(rotor_obj) + 1 	#get the index of current rotor + 1
+				next_rotor = Rotor.position_list[next_rotor]			#use that index to get the next rotor
+				rotor_obj.check_notch(next_rotor) 						#call check_notch on the next rotor
+
+				Rotor.class_offset[rotor_obj.position + 1] += 1
+				Rotor.class_offset[rotor_obj.position + 1] = rotor_obj.out_of_range(Rotor.class_offset[rotor_obj.position + 1])
+
+
+				# next_rotor = Rotor.position_list.index(rotor_obj) + 1 	#get the index of current rotor + 1
+				# next_rotor = Rotor.position_list[next_rotor]			#use that index to get the next rotor
+				# rotor_obj.check_notch(next_rotor) 						#call check_notch on the next rotor
 
 	
 	def rotate(self):
 		if self.position == 0:
-			self.check_notch()
+			self.check_notch(self)
 			print('---------')
 			print(Rotor.class_offset)
 			Rotor.class_offset[self.position] += 1
-			if Rotor.class_offset[self.position] > 25:
-				Rotor.class_offset[self.position] -= 26
-			if Rotor.class_offset[self.position] < 0:
-				Rotor.class_offset[self.position] += 26
+			Rotor.class_offset[self.position] = self.out_of_range(Rotor.class_offset[self.position])
 			print(Rotor.class_offset)
 			print('---------')
 
 
-		#self.check_notch()
-		# if self.position == 0:
-		# 	self.offset += 1
-		
-		# if self.offset > 25:
-		# 	self.offset -= 25
-
-	
 	def get_key(self, letter):
 		self.rotate()
 		self.letter = letter
