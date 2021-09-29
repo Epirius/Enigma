@@ -47,6 +47,7 @@ class Rotor:
 		if self.position < len(Rotor.position_list) - 1:
 			if ord(self.notch) - 65 == Rotor.class_offset[self.position]:
 				Rotor.class_offset[self.position + 1] += 1
+				Rotor.class_offset[self.position + 1] = self.out_of_range(Rotor.class_offset[self.position + 1])
 
 	
 	def rotate(self):
@@ -55,12 +56,12 @@ class Rotor:
 			print('---------')
 			print(Rotor.class_offset)
 			Rotor.class_offset[self.position] += 1
-			print(Rotor.class_offset)
-			print('---------')
 			if Rotor.class_offset[self.position] > 25:
 				Rotor.class_offset[self.position] -= 26
 			if Rotor.class_offset[self.position] < 0:
 				Rotor.class_offset[self.position] += 26
+			print(Rotor.class_offset)
+			print('---------')
 
 
 		#self.check_notch()
