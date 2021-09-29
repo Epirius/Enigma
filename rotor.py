@@ -54,11 +54,6 @@ class Rotor:
 				Rotor.class_offset[rotor_obj.position + 1] += 1
 				Rotor.class_offset[rotor_obj.position + 1] = rotor_obj.out_of_range(Rotor.class_offset[rotor_obj.position + 1])
 
-
-				# next_rotor = Rotor.position_list.index(rotor_obj) + 1 	#get the index of current rotor + 1
-				# next_rotor = Rotor.position_list[next_rotor]			#use that index to get the next rotor
-				# rotor_obj.check_notch(next_rotor) 						#call check_notch on the next rotor
-
 	
 	def rotate(self):
 		if self.position == 0:
