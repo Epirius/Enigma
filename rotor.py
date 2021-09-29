@@ -19,9 +19,9 @@ class Rotor:
 	
 	def out_of_range(self, number):
 		if number > 25:
-			number -= 25
+			number -= 26
 		if number < 0:
-			number += 25
+			number += 26
 		return number
 
 
@@ -58,9 +58,9 @@ class Rotor:
 			print(Rotor.class_offset)
 			print('---------')
 			if Rotor.class_offset[self.position] > 25:
-				Rotor.class_offset[self.position] -= 25
+				Rotor.class_offset[self.position] -= 26
 			if Rotor.class_offset[self.position] < 0:
-				Rotor.class_offset[self.position] += 25
+				Rotor.class_offset[self.position] += 26
 
 
 		#self.check_notch()
@@ -79,6 +79,7 @@ class Rotor:
 		if isinstance(letter, str):
 			self.letter = letter.upper()
 			self.letter = ord(self.letter) - 65
+			self.letter = self.out_of_range(self.letter)
 
 		#adding offset
 		self.letter += Rotor.class_offset[self.position]
@@ -97,31 +98,8 @@ class Rotor:
 			self.letter = ord(self.letter) - 65
 
 		self.letter = self.out_of_range(self.letter)
-
-		if not 0 <= self.letter < 91:
-			print("line 101 ______________________________________________________")
-
 		self.letter = self.reverse_rotor[chr(self.letter + 65)]
 		self.letter = Rotor.Alphabet.index(self.letter)
-		# TODO: we may need to put the offset before we convert
 		self.letter -= Rotor.class_offset[self.position]
 		self.letter = self.out_of_range(self.letter)
 		return self.letter
-
-
-
-
-
-		################################################################################
-		# self.temp_return_letter = ord(letter) + Rotor.class_offset[self.position]
-		# if (self.temp_return_letter - 64) > 26:
-		# 	self.temp_return_letter -= 26
-		# if self.position == 0:
-		# 	# FIXIT: this -1 is a bad fix. there is an off by one error only on return rotor 1. and i can't find the bug so i just have it -= 1 here. but the bug might break otherthings aswell so this is not ideal.
-		# 	# FIXIT: this fix works for the first letter but causes an of by one error for the next ones. so i need to find out why it is wrong to begin with to continue.
-		# 	#self.temp_return_letter -= 1
-		# 	K=1
-		# self.temp_return_letter = chr(self.temp_return_letter)
-
-
-		# return self.reverse_rotor.get(self.temp_return_letter)
