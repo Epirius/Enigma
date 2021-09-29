@@ -37,7 +37,6 @@ r2 = Rotor(rotor2,0)
 r3 = Rotor(rotor3,0)
 
 def enigma(text):
-	x = 1
 	output = ""
 	for message in text:
 		message = message.upper()
@@ -51,6 +50,7 @@ def enigma(text):
 		output += chr(message+65) + " "
 	return output
 
-test= enigma("ut")
+test= enigma("URREMTPEVEQGNXSCBYEPOGPDAYAFCPEHTMCRUPKUXYXUMYWWUISSMD")
+#standsforAmericanStandardCodeforInformationInterchange
 print(".............................")
 print(test)

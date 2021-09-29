@@ -17,6 +17,14 @@ class Rotor:
 		self.notch = self.version[1]
 
 	
+	def out_of_range(self, number):
+		if number > 25:
+			number -= 25
+		if number < 0:
+			number += 25
+		return number
+
+
 	def assign_rotor(self, mode):
 		#creates a dictionary with key = alphabet and value = version (rotor)
 		
@@ -40,8 +48,7 @@ class Rotor:
 			if ord(self.notch) - 65 == Rotor.class_offset[self.position]:
 				Rotor.class_offset[self.position + 1] += 1
 
-
-
+	
 	def rotate(self):
 		if self.position == 0:
 			self.check_notch()
@@ -52,6 +59,8 @@ class Rotor:
 			print('---------')
 			if Rotor.class_offset[self.position] > 25:
 				Rotor.class_offset[self.position] -= 25
+			if Rotor.class_offset[self.position] < 0:
+				Rotor.class_offset[self.position] += 25
 
 
 		#self.check_notch()
@@ -73,8 +82,7 @@ class Rotor:
 
 		#adding offset
 		self.letter += Rotor.class_offset[self.position]
-		if self.letter > 25:
-			self.letter -= 25
+		self.letter = self.out_of_range(self.letter)
 
 		self.encrypted_letter = self.rotor[chr(self.letter + 65)]
 		return Rotor.Alphabet.index(self.encrypted_letter)
@@ -88,16 +96,16 @@ class Rotor:
 			self.letter = letter.upper()
 			self.letter = ord(self.letter) - 65
 
-		if self.letter > 25:
-			self.letter -= 25
+		self.letter = self.out_of_range(self.letter)
 
-		# print(f'letter: {chr(self.letter + 65)}')
+		if not 0 <= self.letter < 91:
+			print("line 101 ______________________________________________________")
+
 		self.letter = self.reverse_rotor[chr(self.letter + 65)]
-		# print(f'encrypted: {self.encrypted_letter}')
 		self.letter = Rotor.Alphabet.index(self.letter)
 		# TODO: we may need to put the offset before we convert
 		self.letter -= Rotor.class_offset[self.position]
-		# print(f'offset: {chr(self.letter + 65)}')
+		self.letter = self.out_of_range(self.letter)
 		return self.letter
 
 
