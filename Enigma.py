@@ -1,19 +1,9 @@
 #enigma M3 (army, navy)
-#https://www.cryptomuseum.com/crypto/enigma/index.htm
-#https://piotte13.github.io/enigma-cipher/
-
 from rotor import Rotor
+import settings
+
 
 Alphabet =	 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-rotor1 = 	("EKMFLGDQVZNTOWYHXUSPAIBRCJ", "Q")
-rotor2 = 	("AJDKSIRUXBLHWTMCQGZNPYFVOE", "E")
-rotor3 = 	("BDFHJLCPRTXVZNYEIWGAKMUSQO", "V")
-rotor4 = 	("ESOVPZJAYQUIRHXLNFTGKDCMWB", "J")
-rotor5 = 	("VZBRGITYUPSDNHLXAWMJQOFECK", "Z")
-
-ReflectorB = "YRUHQSLDPXNGOKMIEBFZCWVJAT"
-ReflectorC = "FVPJIAOYEDRZXWGCTKUQSBNMHL"
-
 
 reflector_dict = {}
 def create_reflector(version):
@@ -25,9 +15,6 @@ def reflect(letter):
 		letter = chr(letter + 65)
 	letter = reflector_dict[letter]
 	return Alphabet.index(letter)
-
-#TODO: make this non hardcoded!!!
-create_reflector(ReflectorB)
 
 
 def create_plug_board(plug_settings):
@@ -43,11 +30,6 @@ def plug_board(char, plug_dict):
     else:
         return char
 
-
-#test delete this TODO
-r1 = Rotor(rotor1,0)
-r2 = Rotor(rotor2,0)
-r3 = Rotor(rotor3,0)
 
 def enigma(text, plug_dict):
 	output = ""
@@ -70,14 +52,19 @@ def enigma(text, plug_dict):
 	return output
 
 
+create_reflector(settings.reflector_settings)
+
+r1 = Rotor(settings.position_settings[0][0], settings.position_settings[0][1])
+r2 = Rotor(settings.position_settings[1][0], settings.position_settings[1][1])
+r3 = Rotor(settings.position_settings[2][0], settings.position_settings[2][1])
+
 #creating plug_dict
-plug_settings = {"A":"H", "L":"R"}
+plug_settings = settings.plug_pairs
 plug_dict = create_plug_board(plug_settings)
 
-#message
-x= "hello"
+#############################################
 
-test= enigma(x, plug_dict)
-print(".............................")
-print(test)
+message = enigma(settings.message, plug_dict)
+# print(".............................")
+print(message)
 

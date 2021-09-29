@@ -58,12 +58,12 @@ class Rotor:
 	def rotate(self):
 		if self.position == 0:
 			self.check_notch(self)
-			print('---------')
-			print(Rotor.class_offset)
+			# print('---------')
+			# print(Rotor.class_offset)
 			Rotor.class_offset[self.position] += 1
 			Rotor.class_offset[self.position] = self.out_of_range(Rotor.class_offset[self.position])
-			print(Rotor.class_offset)
-			print('---------')
+			# print(Rotor.class_offset)
+			# print('---------')
 
 
 	def get_key(self, letter):

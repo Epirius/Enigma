@@ -18,6 +18,6 @@ for now Enigma(NEW) works with the first letter but not after that (this is a bu
 
 TODO:
 -add morse code input and output.
--make a frontend
 
 -clean up the code
+-create (and learn) a better settings system
