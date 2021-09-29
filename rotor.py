@@ -76,15 +76,12 @@ class Rotor:
 		if self.letter > 25:
 			self.letter -= 25
 
-		print(f'letter: {self.letter}')
 		self.encrypted_letter = self.rotor[chr(self.letter + 65)]
-		print(f'encrypted: {self.encrypted_letter}')
 		return Rotor.Alphabet.index(self.encrypted_letter)
 
 
 	#get the key going through the rotor in the opposite direction
 	def get_return_key(self, letter):
-		self.rotate()
 		self.letter = letter
 
 		if isinstance(letter, str):
