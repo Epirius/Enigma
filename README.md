@@ -1,23 +1,9 @@
 # enigma
 
 enigma(old) is a old file that does not work, i have not deleted it because i want to be able to look back on it later.
+#######################################################################################################################
 
--------------
-problem: i think the machine will work on messages written with this machine, but will not be able to translate messages from the real enigma machine.
-this is because the output from one rotor, lets say K in this example, will be the input in the next rotor based on the letter K, not on the position of the rotors relative to each other
-
-for example output from one rotor is K, input into the next rotor will also be K. even tho the next rotor had S next to the output of the first rotor K.
-i will still be able to encrypt and decrypt messages from this machine. but i will have to fix this bug to translate messages from the real enigma.
--------------
-
-for now Enigma(NEW) works with the first letter but not after that (this is a bug), and you have to restart between encrypting and decrypting (this is not a bug. you have to reset the enigma settings to decrypt. something i have not implementet yet so the way to reset is to restart the program.)
-
--if i turn off the changing of offset it works on more then one letter, so that is where the problem comes from. i will have to take a closer look at that later.
-
-
-
-TODO:
--add morse code input and output.
-
--clean up the code
--create (and learn) a better settings system
+this is my attempt to implement a copy of the German ww2 encryption machine "Enigma".
+it does not currently work on real world german messages, 
+it does however work with messages created with the same program.
+there is also a morse code converter file, so you can convert the secret message to and from morse code.
