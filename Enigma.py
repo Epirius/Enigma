@@ -1,9 +1,23 @@
 #enigma M3 (army, navy)
 from rotor import Rotor
 import settings
+import morse_code
 
 
 Alphabet =	 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+
+def main():
+	# message = settings.message
+	message = input("Message: ")
+	if morse_code.is_morse(message):
+		message = morse_code.convert_morse(message)
+	message = enigma(message, plug_dict)
+
+	print("\n" * 2)
+	print(message)
+	print(morse_code.convert_morse(message))
+
 
 reflector_dict = {}
 def create_reflector(version):
@@ -62,9 +76,7 @@ r3 = Rotor(settings.position_settings[2][0], settings.position_settings[2][1])
 plug_settings = settings.plug_pairs
 plug_dict = create_plug_board(plug_settings)
 
-#############################################
 
-message = enigma(settings.message, plug_dict)
-# print(".............................")
-print(message)
 
+if __name__ == '__main__':
+	main()
